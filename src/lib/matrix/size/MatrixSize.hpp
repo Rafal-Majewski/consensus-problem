@@ -5,6 +5,7 @@
 struct MatrixSize {
 	const int rowsCount;
 	const int columnsCount;
+	MatrixSize(int rowsCount, int columnsCount);
 };
 
 #endif // MATRIXSIZE_H_INCLUDED
