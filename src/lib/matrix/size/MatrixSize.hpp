@@ -6,6 +6,8 @@ struct MatrixSize {
 	const int rowsCount;
 	const int columnsCount;
 	MatrixSize(int rowsCount, int columnsCount);
+	bool operator==(const MatrixSize& other) const;
+	bool operator!=(const MatrixSize& other) const;
 };
 
 #endif // MATRIXSIZE_H_INCLUDED
