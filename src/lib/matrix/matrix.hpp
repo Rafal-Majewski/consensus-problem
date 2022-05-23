@@ -1,2 +1,2 @@
 #include "./Matrix.hpp"
-#include "./matrixsize/MatrixSize.hpp"
+#include "./size/MatrixSize.hpp"

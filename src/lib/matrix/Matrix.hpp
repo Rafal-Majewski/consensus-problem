@@ -1,7 +1,7 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
 
-#include "./matrixsize/MatrixSize.hpp"
+#include "./size/MatrixSize.hpp"
 
 
 class Matrix {

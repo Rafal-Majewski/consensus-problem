@@ -1,6 +1,6 @@
 add_library(matrix
 	./Matrix.cpp
-	./matrixsize/MatrixSize.cpp
+	./size/MatrixSize.cpp
 	# ./densematrix/DenseMatrix.cpp
 	# ./sparsematrix/SparseMatrix.cpp
 )
