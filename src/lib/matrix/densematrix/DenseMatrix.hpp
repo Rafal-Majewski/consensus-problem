@@ -11,6 +11,7 @@ class DenseMatrix : public Matrix<I> {
 	I **values;
 	public:
 	DenseMatrix(MatrixSize size);
+	DenseMatrix(MatrixSize size, I *values);
 	~DenseMatrix();
 };
 
