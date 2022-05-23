@@ -1,5 +1,5 @@
-#ifndef MATRIX_H_INCLUDED
-#define MATRIX_H_INCLUDED
+#ifndef MATRIX_HPP_INCLUDED
+#define MATRIX_HPP_INCLUDED
 
 #include "./size/MatrixSize.hpp"
 
@@ -12,4 +12,4 @@ class Matrix {
 
 #include "./Matrix.tpp"
 
-#endif // MATRIX_H_INCLUDED
+#endif // MATRIX_HPP_INCLUDED
