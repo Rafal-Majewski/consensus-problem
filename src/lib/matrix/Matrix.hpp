@@ -7,7 +7,7 @@ template <typename I>
 class Matrix {
 	public:
 	const MatrixSize size;
-	Matrix<I>(const MatrixSize& size);
+	Matrix<I>(MatrixSize size);
 };
 
 #include "./Matrix.tpp"
