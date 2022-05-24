@@ -5,9 +5,11 @@
 #include <rule/Rule.hpp>
 
 
-class RulesManager {
-	private:
-	std::vector<Rule> rules;
-};
+namespace ConsensusProblem {
+	class RulesManager {
+		private:
+		std::vector<Rule> rules;
+	};
+}
 
 #endif // RULESMAGANER_HPP_INCLUDED
