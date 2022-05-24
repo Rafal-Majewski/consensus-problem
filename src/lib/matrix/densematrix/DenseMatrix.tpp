@@ -2,10 +2,11 @@
 
 
 template <typename I>
-DenseMatrix<I>::DenseMatrix(MatrixSize size) : Matrix<I>(size) {
-	values = new DenseMatrixRow<I>[size.rowsCount];
-	for (int y = 0; y < size.rowsCount; y++) {
-		values[y] = DenseMatrixRow<I>(size.columnsCount);
+DenseMatrix<I>::DenseMatrix(MatrixSize a_size) : Matrix<I>(a_size) {
+	values = new DenseMatrixRow<I>[this->size.rowsCount];
+	for (int y = 0; y < this->size.rowsCount; y++) {
+		DenseMatrixRow<I> row(this->size.columnsCount);
+		values[y] = row;
 	}
 };
 
@@ -20,7 +21,7 @@ DenseMatrix<I>::DenseMatrix(MatrixSize a_size, I *a_values) : DenseMatrix(a_size
 
 template <typename I>
 DenseMatrix<I>::~DenseMatrix() {
-	// todo
+	delete[] values;
 };
 
 template <typename I>

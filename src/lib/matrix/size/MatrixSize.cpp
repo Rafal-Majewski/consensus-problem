@@ -1,7 +1,7 @@
 #include "./MatrixSize.hpp"
 
 
-MatrixSize::MatrixSize(int rowsCount, int columnsCount) : rowsCount(rowsCount), columnsCount(columnsCount) {
+MatrixSize::MatrixSize(int a_rowsCount, int a_columnsCount) : rowsCount(a_rowsCount), columnsCount(a_columnsCount) {
 };
 
 bool MatrixSize::operator==(const MatrixSize& other) const {
