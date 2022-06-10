@@ -28,3 +28,23 @@ template <typename I>
 DenseMatrixRow<I>& DenseMatrix<I>::operator[](int rowIndex) {
 	return values[rowIndex];
 };
+
+template <typename I>
+DenseMatrixRow<I>& DenseMatrix<I>::operator[](int rowIndex) const {
+	return values[rowIndex];
+};
+
+template <typename I>
+DenseMatrix<I> DenseMatrix<I>::operator*(Matrix<I>& other) const {
+	DenseMatrix<I> result(this->size * other.size);
+	for (int y = 0; y < this->size.rowsCount; ++y) {
+		for (int x = 0; x < other.size.columnsCount; ++x) {
+			I sum = 0;
+			for (int i = 0; i < this->size.columnsCount; ++i) {
+				sum += (*this)[y][i] * other[i][x];
+			}
+			result[y][x] = sum;
+		}
+	}
+	return result;
+};

@@ -15,6 +15,8 @@ class DenseMatrix : public Matrix<I> {
 	DenseMatrix(MatrixSize size, I* values);
 	~DenseMatrix();
 	DenseMatrixRow<I>& operator[](int rowIndex) override;
+	DenseMatrixRow<I>& operator[](int rowIndex) const override;
+	DenseMatrix<I> operator*(Matrix<I>& other) const;
 };
 
 #include "./DenseMatrix.tpp"
