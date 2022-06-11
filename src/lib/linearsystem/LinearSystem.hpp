@@ -13,6 +13,7 @@ struct LinearSystem {
 	LinearSystem(const LinearSystem<DT>& other);
 	~LinearSystem();
 	void addRows(int targetRowIndex, int sourceRowIndex, DT factor);
+	void swapRows(int rowIndex1, int rowIndex2);
 };
 
 #include "./LinearSystem.tpp"

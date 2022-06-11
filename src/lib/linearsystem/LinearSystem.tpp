@@ -47,3 +47,13 @@ void LinearSystem<DT>::addRows(int targetRowIndex, int sourceRowIndex, DT factor
 	}
 	this->constants[targetRowIndex] += factor * this->constants[sourceRowIndex];
 }
+
+template <typename DT>
+void LinearSystem<DT>::swapRows(int rowIndex1, int rowIndex2) {
+	DT* tempCoefficients = this->coefficients[rowIndex1];
+	this->coefficients[rowIndex1] = this->coefficients[rowIndex2];
+	this->coefficients[rowIndex2] = tempCoefficients;
+	DT tempConstant = this->constants[rowIndex1];
+	this->constants[rowIndex1] = this->constants[rowIndex2];
+	this->constants[rowIndex2] = tempConstant;
+}
