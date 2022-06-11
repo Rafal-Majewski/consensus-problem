@@ -5,6 +5,7 @@
 struct LinearSystemSize {
 	const int equationsCount;
 	const int variablesCount;
+	LinearSystemSize(int equationsCount, int variablesCount);
 };
 
 #endif // LINEARSYSTEMSIZE_HPP_INCLUDED
