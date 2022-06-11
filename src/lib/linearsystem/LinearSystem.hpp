@@ -13,4 +13,6 @@ struct LinearSystem {
 	~LinearSystem();
 };
 
+#include "./LinearSystem.tpp"
+
 #endif // LINEARSYSTEM_HPP_INCLUDED
