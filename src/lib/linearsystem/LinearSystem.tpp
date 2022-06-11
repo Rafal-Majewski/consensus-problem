@@ -17,6 +17,21 @@ LinearSystem<DT>::LinearSystem(LinearSystemSize size, DT* coefficients, DT* cons
 }
 
 template <typename DT>
+LinearSystem<DT>::LinearSystem(const LinearSystem<DT>& other) :
+	size(other.size),
+	coefficients(new DT*[other.size.equationsCount]),
+	constants(new DT[other.size.equationsCount])
+{
+	for (int y = 0; y < this->size.equationsCount; ++y) {
+		this->coefficients[y] = new DT[this->size.variablesCount];
+		for (int x = 0; x < this->size.variablesCount; ++x) {
+			this->coefficients[y][x] = other.coefficients[y][x];
+		}
+		this->constants[y] = other.constants[y];
+	}
+}
+
+template <typename DT>
 LinearSystem<DT>::~LinearSystem() {
 	for (int y = 0; y < this->size.equationsCount; ++y) {
 		delete[] this->coefficients[y];

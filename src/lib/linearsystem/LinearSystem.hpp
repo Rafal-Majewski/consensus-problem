@@ -10,6 +10,7 @@ struct LinearSystem {
 	DT** coefficients;
 	DT* constants;
 	LinearSystem(LinearSystemSize size, DT* coefficients, DT* constants);
+	LinearSystem(const LinearSystem<DT>& other);
 	~LinearSystem();
 };
 
