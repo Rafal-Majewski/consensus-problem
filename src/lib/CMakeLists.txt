@@ -1,1 +1,3 @@
 add_subdirectory(./matrix)
+add_subdirectory(./solvelinearsystem)
+add_subdirectory(./linearsystem)
