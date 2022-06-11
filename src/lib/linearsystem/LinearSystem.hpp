@@ -9,7 +9,6 @@ struct LinearSystem {
 	const LinearSystemSize size;
 	DT** coefficients;
 	DT* constants;
-	LinearSystem(LinearSystemSize size, DT** coefficients, DT* constants);
 	LinearSystem(LinearSystemSize size, DT* coefficients, DT* constants);
 	~LinearSystem();
 };

@@ -2,20 +2,6 @@
 
 
 template <typename DT>
-LinearSystem<DT>::LinearSystem(LinearSystemSize size, DT** coefficients, DT* constants) :
-	size(size),
-	coefficients(new DT[size.equationsCount][size.variablesCount]),
-	constants(new DT[size.equationsCount])
-{
-	for (int y = 0; y < size.equationsCount; ++y) {
-		for (int x = 0; x < size.variablesCount; ++x) {
-			coefficients[y][x] = coefficients[y][x];
-		}
-		constants[y] = constants[y];
-	}
-}
-
-template <typename DT>
 LinearSystem<DT>::LinearSystem(LinearSystemSize size, DT* coefficients, DT* constants) :
 	size(size),
 	coefficients(new DT[size.equationsCount][size.variablesCount]),
