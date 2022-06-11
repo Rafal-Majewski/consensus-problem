@@ -39,3 +39,11 @@ LinearSystem<DT>::~LinearSystem() {
 	delete[] this->coefficients;
 	delete[] this->constants;
 }
+
+template <typename DT>
+void LinearSystem<DT>::addRows(int targetRowIndex, int sourceRowIndex, DT factor) {
+	for (int x = 0; x < this->size.variablesCount; ++x) {
+		this->coefficients[targetRowIndex][x] += factor * this->coefficients[sourceRowIndex][x];
+	}
+	this->constants[targetRowIndex] += factor * this->constants[sourceRowIndex];
+}

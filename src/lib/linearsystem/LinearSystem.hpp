@@ -12,6 +12,7 @@ struct LinearSystem {
 	LinearSystem(LinearSystemSize size, DT* coefficients, DT* constants);
 	LinearSystem(const LinearSystem<DT>& other);
 	~LinearSystem();
+	void addRows(int targetRowIndex, int sourceRowIndex, DT factor);
 };
 
 #include "./LinearSystem.tpp"
