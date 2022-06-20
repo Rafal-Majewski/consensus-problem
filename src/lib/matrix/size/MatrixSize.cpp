@@ -12,10 +12,3 @@ bool MatrixSize::operator==(const MatrixSize& other) const {
 bool MatrixSize::operator!=(const MatrixSize& other) const {
 	return !operator==(other);
 };
-
-MatrixSize MatrixSize::operator*(const MatrixSize& other) const {
-	if (columnsCount != other.rowsCount) {
-		throw std::invalid_argument("Matrix multiplication is not possible");
-	}
-	return MatrixSize(rowsCount, other.columnsCount);
-};

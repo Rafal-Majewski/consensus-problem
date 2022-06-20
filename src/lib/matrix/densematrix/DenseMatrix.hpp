@@ -3,19 +3,18 @@
 
 #include "../Matrix.hpp"
 #include "../size/MatrixSize.hpp"
-#include "./row/DenseMatrixRow.hpp"
 
 
 template <typename I>
 class DenseMatrix : public Matrix<I> {
 	private:
-	DenseMatrixRow<I>* rows;
+	I* values;
 	public:
 	DenseMatrix(MatrixSize size);
 	DenseMatrix(MatrixSize size, I* values);
 	~DenseMatrix();
-	DenseMatrixRow<I>& operator[](int rowIndex) override;
-	DenseMatrixRow<I>& operator[](int rowIndex) const override;
+	I operator()(int y, int x) const override;
+	I& operator()(int y, int x) override;
 	DenseMatrix<I> operator*(Matrix<I>& other) const;
 };
 

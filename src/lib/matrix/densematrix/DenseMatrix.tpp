@@ -3,47 +3,42 @@
 
 template <typename I>
 DenseMatrix<I>::DenseMatrix(MatrixSize size) : Matrix<I>(size) {
-	this->rows = new DenseMatrixRow<I>[this->size.rowsCount];
-	for (int y = 0; y < this->size.rowsCount; y++) {
-		DenseMatrixRow<I> row(this->size.columnsCount);
-		this->rows[y] = row;
-	}
+	this->values = new I[this->size.rowsCount * this->size.columnsCount];
 };
 
 template <typename I>
-DenseMatrix<I>::DenseMatrix(MatrixSize size, I *values) : DenseMatrix(size) {
-	for (int i = 0, y = 0; y < this->size.rowsCount; ++y) {
-		for (int x = 0; x < this->size.columnsCount; ++x, ++i) {
-			this->rows[y][x] = values[i];
-		}
+DenseMatrix<I>::DenseMatrix(MatrixSize size, I* values) : DenseMatrix(size) {
+	int totalCellsCount = this->size.rowsCount * this->size.columnsCount;
+	for (int i = 0; i < totalCellsCount; ++i) {
+		this->values[i] = values[i];
 	}
 };
 
 template <typename I>
 DenseMatrix<I>::~DenseMatrix() {
-	delete[] this->rows;
+	delete[] this->values;
 };
 
 template <typename I>
-DenseMatrixRow<I>& DenseMatrix<I>::operator[](int rowIndex) {
-	return this->rows[rowIndex];
-};
+I& DenseMatrix<I>::operator()(int y, int x) {
+	return this->values[y * this->size.columnsCount + x];
+}
 
 template <typename I>
-DenseMatrixRow<I>& DenseMatrix<I>::operator[](int rowIndex) const {
-	return this->rows[rowIndex];
-};
+I DenseMatrix<I>::operator()(int y, int x) const {
+	return this->values[y * this->size.columnsCount + x];
+}
 
 template <typename I>
 DenseMatrix<I> DenseMatrix<I>::operator*(Matrix<I>& other) const {
-	DenseMatrix<I> result(this->size * other.size);
+	DenseMatrix<I> result(MatrixSize(this->size.rowsCount, other.size.columnsCount));
 	for (int y = 0; y < this->size.rowsCount; ++y) {
 		for (int x = 0; x < other.size.columnsCount; ++x) {
 			I sum = 0;
 			for (int i = 0; i < this->size.columnsCount; ++i) {
-				sum += (*this)[y][i] * other[i][x];
+				sum += (*this)(y, i) * other(i, x);
 			}
-			result[y][x] = sum;
+			result(y, x) = sum;
 		}
 	}
 	return result;

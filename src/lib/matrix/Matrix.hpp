@@ -2,7 +2,6 @@
 #define MATRIX_HPP_INCLUDED
 
 #include "./size/MatrixSize.hpp"
-#include "./row/MatrixRow.hpp"
 
 
 template <typename I>
@@ -11,8 +10,8 @@ class Matrix {
 	const MatrixSize size;
 	Matrix<I>(MatrixSize size);
 	Matrix<I>(MatrixSize size, I* values);
-	virtual MatrixRow<I>& operator[](int rowIndex) = 0;
-	virtual MatrixRow<I>& operator[](int rowIndex) const = 0;
+	virtual I operator()(int y, int x) const = 0;
+	virtual I& operator()(int y, int x) = 0;
 };
 
 
