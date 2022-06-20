@@ -11,4 +11,5 @@ struct MatrixSize {
 	MatrixSize operator*(const MatrixSize& other) const;
 };
 
+
 #endif // MATRIXSIZE_H_INCLUDED
