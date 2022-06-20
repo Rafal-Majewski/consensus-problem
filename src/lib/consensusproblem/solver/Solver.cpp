@@ -1,1 +1,1 @@
-#include "./ConsensusProblemSolver.hpp"
+#include "./Solver.hpp"

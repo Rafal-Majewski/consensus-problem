@@ -7,12 +7,15 @@
 namespace ConsensusProblem {
 	template <typename DT>
 	class MonteCarloSolver : public Solver<DT> {
+		const int iterationsCount;
+		public:
+		MonteCarloSolver(const int iterationsCount);
 		DT solve(
-			const int targetState,
-			const int statesCount,
-			const int startingStates[],
-			const int rulesCount,
-			const int rules[][4]
+			const short targetState,
+			const short statesCount,
+			const short* startingStates,
+			const short rulesCount,
+			const std::pair<std::pair<short, short>, std::pair<short, short>>* rules
 		) const override;
 	};
 }
