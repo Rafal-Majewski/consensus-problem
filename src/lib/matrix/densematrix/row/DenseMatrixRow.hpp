@@ -3,6 +3,7 @@
 
 #include "../../row/MatrixRow.hpp"
 
+
 template <typename I>
 class DenseMatrix;
 
@@ -19,6 +20,7 @@ class DenseMatrixRow : public MatrixRow<I> {
 	~DenseMatrixRow();
 	friend class DenseMatrix<I>;
 };
+
 
 #include "./DenseMatrixRow.tpp"
 

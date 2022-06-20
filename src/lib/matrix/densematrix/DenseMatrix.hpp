@@ -9,7 +9,7 @@
 template <typename I>
 class DenseMatrix : public Matrix<I> {
 	private:
-	DenseMatrixRow<I>* values;
+	DenseMatrixRow<I>* rows;
 	public:
 	DenseMatrix(MatrixSize size);
 	DenseMatrix(MatrixSize size, I* values);
@@ -18,6 +18,7 @@ class DenseMatrix : public Matrix<I> {
 	DenseMatrixRow<I>& operator[](int rowIndex) const override;
 	DenseMatrix<I> operator*(Matrix<I>& other) const;
 };
+
 
 #include "./DenseMatrix.tpp"
 

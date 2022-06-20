@@ -10,9 +10,11 @@ class Matrix {
 	public:
 	const MatrixSize size;
 	Matrix<I>(MatrixSize size);
+	Matrix<I>(MatrixSize size, I* values);
 	virtual MatrixRow<I>& operator[](int rowIndex) = 0;
 	virtual MatrixRow<I>& operator[](int rowIndex) const = 0;
 };
+
 
 #include "./Matrix.tpp"
 
