@@ -9,8 +9,8 @@ TEST(MonteCarloSolver, sanity_check_1) {
 	const short* targetStates = new short[statesCount] {1, 0};
 	const short* startingStates = new short[statesCount] {1, 0};
 	const short rulesCount = 0;
-	ConsensusProblem::Rule* const* rules =
-			new ConsensusProblem::Rule*[rulesCount] {};
+	ConsensusProblem::Rule* const* rules
+		= new ConsensusProblem::Rule*[rulesCount] {};
 	
 	EXPECT_NEAR(
 		solver.solve(
@@ -31,8 +31,8 @@ TEST(MonteCarloSolver, sanity_check_2) {
 	const short* targetStates = new short[statesCount] {0, 1};
 	const short* startingStates = new short[statesCount] {1, 0};
 	const short rulesCount = 0;
-	ConsensusProblem::Rule* const* rules =
-		new ConsensusProblem::Rule*[rulesCount] {};
+	ConsensusProblem::Rule* const* rules
+		= new ConsensusProblem::Rule*[rulesCount] {};
 
 	EXPECT_NEAR(
 		solver.solve(
@@ -57,8 +57,8 @@ TEST(MonteCarloSolver, task_4_0_4) {
 	const short* targetStates = new short[statesCount] {8, 0, 0};
 	const short* startingStates = new short[statesCount] {4, 0, 4};
 	const short rulesCount = 3;
-	ConsensusProblem::Rule* const* rules =
-		new ConsensusProblem::Rule*[rulesCount] {
+	ConsensusProblem::Rule* const* rules
+		= new ConsensusProblem::Rule*[rulesCount] {
 			ConsensusProblem::createRule(
 				{0, 1},
 				{0, 0}
