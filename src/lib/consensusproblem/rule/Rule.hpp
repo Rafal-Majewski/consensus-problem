@@ -11,7 +11,6 @@ namespace ConsensusProblem {
 
 		const std::array<const short, 2> before;
 		const std::array<const short, 2> after;
-		int test = 3;
 
 		virtual bool isApplicable(const short* states) const = 0;
 		virtual void apply(short* states) const = 0;
