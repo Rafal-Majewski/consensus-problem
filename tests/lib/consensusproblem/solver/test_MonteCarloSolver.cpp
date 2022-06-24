@@ -5,7 +5,7 @@
 TEST(MonteCarloSolver, sanity_check_1) {
 	ConsensusProblem::MonteCarloSolver<double> solver(10);
 	short statesCount = 2;
-	short targetStates[2] = {1, 0};
+	short* targetStates = new short[statesCount] {1, 0};
 	short* startingStates = new short[statesCount] {1, 0};
 	short rulesCount = 0;
 	ConsensusProblem::Rule* rules = new ConsensusProblem::Rule[rulesCount];
@@ -25,7 +25,7 @@ TEST(MonteCarloSolver, sanity_check_1) {
 TEST(MonteCarloSolver, sanity_check_2) {
 	ConsensusProblem::MonteCarloSolver<double> solver(10);
 	short statesCount = 2;
-	short targetStates[2] = {4, 2};
+	short* targetStates = new short[statesCount] {0, 1};
 	short* startingStates = new short[statesCount] {1, 0};
 	short rulesCount = 0;
 	ConsensusProblem::Rule* rules = new ConsensusProblem::Rule[rulesCount];
@@ -49,7 +49,7 @@ TEST(MonteCarloSolver, sanity_check_3) {
 	// the result value is not affected by randomness
 
 	short statesCount = 2;
-	short targetStates[2] = {10, 0};
+	short* targetStates = new short[statesCount] {10, 0};
 	short* startingStates = new short[statesCount] {5, 5};
 	short rulesCount = 2;
 	ConsensusProblem::Rule* rules = new ConsensusProblem::Rule[rulesCount] {
