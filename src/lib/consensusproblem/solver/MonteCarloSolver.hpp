@@ -27,8 +27,14 @@ namespace ConsensusProblem {
 		) const;
 		// returns the count of applicable rules,
 		// and fills the applicableRules array with the applicable rules
+	
+		void applyRule(
+			short* states,
+			const Rule& rule
+		) const;
+		
 
-		bool simulate(
+		void simulate(
 			const short statesCount,
 			short* states,
 			const short rulesCount,
@@ -36,8 +42,8 @@ namespace ConsensusProblem {
 		) const;
 
 		bool iteration(
-			const short targetState,
 			const short statesCount,
+			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
 			const Rule* rules
@@ -48,8 +54,8 @@ namespace ConsensusProblem {
 		MonteCarloSolver(const int iterationsCount);
 
 		DT solve(
-			const short targetState,
 			const short statesCount,
+			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
 			const Rule* rules

@@ -29,32 +29,52 @@ namespace ConsensusProblem {
 		Rule* applicableRules
 	) const {
 		short applicableRulesCount = 0;
-		for (const Rule& rule : rules) {
-			if (this->checkIfRuleIsApplicable(states, rule)) {
-				applicableRules[applicableRulesCount++] = rule;
-			}
+		for (short i = 0; i < rulesCount; ++i) {
+			const Rule& rule = rules[i];
+			if (!this->checkIfRuleIsApplicable(states, rule)) continue;
+			applicableRules[applicableRulesCount++] = rule;
 		}
 		return applicableRulesCount;
 	}
 
 	template <typename DT>
-	bool MonteCarloSolver<DT>::simulate(
+	void MonteCarloSolver<DT>::applyRule(
+		short* states,
+		const Rule& rule
+	) const {
+		--states[rule.first.first];
+		--states[rule.first.second];
+		++states[rule.second.first];
+		++states[rule.second.second];
+	}
+
+	template <typename DT>
+	void MonteCarloSolver<DT>::simulate(
 		const short statesCount,
 		short* states,
 		const short rulesCount,
 		const Rule* rules
 	) const {
 		Rule* applicableRules = new Rule[rulesCount];
-		return true;
-		// while (true) {
-
-		// }
+		while (true) {
+			const short applicableRulesCount = this->findApplicableRules(
+				statesCount,
+				states,
+				rulesCount,
+				rules,
+				applicableRules
+			);
+			if (applicableRulesCount == 0) return;
+			const short randomRuleIndex = rand() % applicableRulesCount;
+			const Rule& rule = applicableRules[randomRuleIndex];
+			this->applyRule(states, rule);
+		}
 	}
 
 	template <typename DT>
 	bool MonteCarloSolver<DT>::iteration(
-		const short targetState,
 		const short statesCount,
+		const short* targetStates,
 		const short* startingStates,
 		const short rulesCount,
 		const Rule* rules
@@ -62,20 +82,20 @@ namespace ConsensusProblem {
 		short* states = new short[statesCount];
 		std::copy(startingStates, startingStates + statesCount, states);
 		this->simulate(statesCount, states, rulesCount, rules);
-		return true;
+		return std::equal(states, states + statesCount, targetStates);
 	}
 
 	template <typename DT>
 	DT MonteCarloSolver<DT>::solve(
-		const short targetState,
 		const short statesCount,
+		const short* targetStates,
 		const short* startingStates,
 		const short rulesCount,
 		const Rule* rules
 	) const {
 		DT matchesCount = 0;
 		for (int i = 0; i < this->iterationsCount; ++i) {
-			matchesCount += this->iteration(targetState, statesCount, startingStates, rulesCount, rules);
+			matchesCount += this->iteration(statesCount, targetStates, startingStates, rulesCount, rules);
 		}
 		return matchesCount / this->iterationsCount;
 	}

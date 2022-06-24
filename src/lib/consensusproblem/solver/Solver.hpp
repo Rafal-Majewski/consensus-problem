@@ -9,8 +9,8 @@ namespace ConsensusProblem {
 	class Solver {
 		public:
 		virtual DT solve(
-			const short targetState,
 			const short statesCount,
+			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
 			const std::pair<std::pair<short, short>, std::pair<short, short>>* rules
