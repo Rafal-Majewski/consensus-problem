@@ -5,49 +5,49 @@
 
 
 namespace ConsensusProblem {
-	typedef std::pair<std::pair<short, short>, std::pair<short, short>> Rule;
-
 	template <typename DT>
 	class MonteCarloSolver : public Solver<DT> {
 		private:
 
 		const int iterationsCount;
 
-		bool checkIfRuleIsApplicable(
-			const short* states,
-			const Rule& rule
-		) const;
-
-		short findApplicableRules(
-			const short statesCount,
-			const short* states,
-			const short rulesCount,
-			const Rule* rules,
-			Rule* applicableRules
-		) const;
-		// returns the count of applicable rules,
-		// and fills the applicableRules array with the applicable rules
+		// short findApplicableRules(
+		// 	const short statesCount,
+		// 	const short* states,
+		// 	const short rulesCount,
+		// 	const Rule* const* rules,
+		// 	Rule* const* applicableRules
+		// ) const;
+		// // returns the count of applicable rules,
+		// // and fills the applicableRules array with the applicable rules
 	
-		void applyRule(
-			short* states,
-			const Rule& rule
-		) const;
+		// void applyRule(
+		// 	short* states,
+		// 	const Rule const* rule
+		// ) const;
 		
 
-		void simulate(
-			const short statesCount,
-			short* states,
-			const short rulesCount,
-			const Rule* rules
-		) const;
+		// void simulate(
+		// 	const short statesCount,
+		// 	short* states,
+		// 	const short rulesCount,
+		// 	const Rule** rules
+		// ) const;
 
-		bool iteration(
-			const short statesCount,
-			const short* targetStates,
-			const short* startingStates,
-			const short rulesCount,
-			const Rule* rules
-		) const;
+		// void tmp(
+		// 	short statesCount,
+		// 	short* states,
+		// 	const short applicableRulesCount,
+		// 	const Rule** applicableRules
+		// ) const;
+
+		// bool iteration(
+		// 	const short statesCount,
+		// 	const short* targetStates,
+		// 	const short* startingStates,
+		// 	const short rulesCount,
+		// 	const Rule* const* rules
+		// ) const;
 
 		public:
 
@@ -58,7 +58,7 @@ namespace ConsensusProblem {
 			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
-			const Rule* rules
+			const Rule* const* rules
 		) const override;
 	};
 }

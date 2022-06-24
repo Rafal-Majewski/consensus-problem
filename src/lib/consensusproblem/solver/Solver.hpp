@@ -2,6 +2,7 @@
 #define CONSENSUSPROBLEMSOLVER_HPP_INCLUDED
 
 #include <utility>
+#include "../rule/Rule.hpp"
 
 
 namespace ConsensusProblem {
@@ -13,7 +14,7 @@ namespace ConsensusProblem {
 			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
-			const std::pair<std::pair<short, short>, std::pair<short, short>>* rules
+			const Rule* const* rules
 		) const = 0;
 	};
 }
