@@ -11,43 +11,37 @@ namespace ConsensusProblem {
 
 		const int iterationsCount;
 
-		// short findApplicableRules(
-		// 	const short statesCount,
-		// 	const short* states,
-		// 	const short rulesCount,
-		// 	const Rule* const* rules,
-		// 	Rule* const* applicableRules
-		// ) const;
-		// // returns the count of applicable rules,
-		// // and fills the applicableRules array with the applicable rules
-	
-		// void applyRule(
-		// 	short* states,
-		// 	const Rule const* rule
-		// ) const;
+		short findApplicableRules(
+			const short statesCount,
+			const short* states,
+			const short rulesCount,
+			Rule* const* rules,
+			Rule** applicableRules
+		) const;
+		// returns the count of applicable rules,
+		// and fills the applicableRules array with the applicable rules
 		
+		void updateStates(
+			const short statesCount,
+			short* states,
+			const short applicableRulesCount,
+			Rule* const* applicableRules
+		) const;
 
-		// void simulate(
-		// 	const short statesCount,
-		// 	short* states,
-		// 	const short rulesCount,
-		// 	const Rule** rules
-		// ) const;
+		void simulate(
+			const short statesCount,
+			short* states,
+			const short rulesCount,
+			Rule* const* rules
+		) const;
 
-		// void tmp(
-		// 	short statesCount,
-		// 	short* states,
-		// 	const short applicableRulesCount,
-		// 	const Rule** applicableRules
-		// ) const;
-
-		// bool iteration(
-		// 	const short statesCount,
-		// 	const short* targetStates,
-		// 	const short* startingStates,
-		// 	const short rulesCount,
-		// 	const Rule* const* rules
-		// ) const;
+		bool iteration(
+			const short statesCount,
+			const short* targetStates,
+			const short* startingStates,
+			const short rulesCount,
+			Rule* const* rules
+		) const;
 
 		public:
 
@@ -58,7 +52,7 @@ namespace ConsensusProblem {
 			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
-			const Rule* const* rules
+			Rule* const* rules
 		) const override;
 	};
 }

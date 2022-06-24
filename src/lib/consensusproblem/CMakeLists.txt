@@ -1,4 +1,10 @@
 add_library(consensusproblem
 	./solver/MonteCarloSolver.cpp
 	./solver/Solver.cpp
+	./rule/Rule.cpp
+	./rule/createRule.cpp
+	./rule/Rule11.cpp
+	./rule/Rule12.cpp
+	./rule/Rule21.cpp
+	./rule/Rule22.cpp
 )

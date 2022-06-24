@@ -14,7 +14,7 @@ namespace ConsensusProblem {
 			const short* targetStates,
 			const short* startingStates,
 			const short rulesCount,
-			const Rule* const* rules
+			Rule* const* rules
 		) const = 0;
 	};
 }

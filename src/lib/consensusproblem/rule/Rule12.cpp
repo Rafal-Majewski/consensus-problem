@@ -1,4 +1,4 @@
-#include "./Rule11.hpp"
+#include "./Rule12.hpp"
 
 
 namespace ConsensusProblem {
