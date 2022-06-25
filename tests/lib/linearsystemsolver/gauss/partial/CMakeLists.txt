@@ -1,6 +1,6 @@
 add_executable(test-partialgauss
 	${PROJECT_TESTS_INIT_FILE}
-	./test_partialGauss.cpp
+	./test_PartialGauss.cpp
 )
 
 target_include_directories(test-partialgauss
@@ -8,7 +8,7 @@ target_include_directories(test-partialgauss
 )
 
 target_link_libraries(test-partialgauss PRIVATE gtest)
-target_link_libraries(test-partialgauss PRIVATE solvelinearsystem)
+target_link_libraries(test-partialgauss PRIVATE linearsystemsolver)
 
 add_test(
 	NAME test-partialgauss

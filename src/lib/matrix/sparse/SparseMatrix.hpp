@@ -1,5 +1,5 @@
-#ifndef SPARSEMATRIX_HPP_INCLUDED
-#define SPARSEMATRIX_HPP_INCLUDED
+#ifndef MATRIX_SPARSE_HPP_INCLUDED
+#define MATRIX_SPARSE_HPP_INCLUDED
 
 #include "../Matrix.hpp"
 #include "../size/MatrixSize.hpp"
@@ -13,13 +13,17 @@ class SparseMatrix : public Matrix<I> {
 	public:
 	SparseMatrix(MatrixSize size);
 	SparseMatrix(MatrixSize size, I* values);
+	SparseMatrix(MatrixSize size, const std::map<std::pair<int, int>, I>& values);
+	SparseMatrix(const SparseMatrix<I>& other);
 	~SparseMatrix();
 	I operator()(int y, int x) const override;
 	I& operator()(int y, int x) override;
-	SparseMatrix<I> operator*(Matrix<I>& other) const;
+	SparseMatrix<I> operator*(SparseMatrix<I> other) const;
+	SparseMatrix<I>* clone() const override;
+	void swapRows(int rowIndex1, int rowIndex2) override;
 };
 
 
 #include "./SparseMatrix.tpp"
 
-#endif // SPARSEMATRIX_HPP_INCLUDED
+#endif // MATRIX_SPARSE_HPP_INCLUDED

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <matrix/densematrix/DenseMatrix.hpp>
+#include <matrix/dense/DenseMatrix.hpp>
 #include <matrix/size/MatrixSize.hpp>
 
 
@@ -75,4 +75,31 @@ TEST(DenseMatrix, multiplication_3_x_2_by_2_x_3_values) {
 	EXPECT_EQ(result(2, 0), 37);
 	EXPECT_EQ(result(2, 1), 63);
 	EXPECT_EQ(result(2, 2), -20);
+}
+
+TEST(DenseMatrix, clone_3_x_2_values_correct_size) {
+	int* values = new int[6] {1, 2, -3, 4, 5, 6};
+	DenseMatrix<int> matrix(MatrixSize(3, 2), values);
+	DenseMatrix<int>* clone = matrix.clone();
+	EXPECT_EQ(clone->size, matrix.size);
+}
+
+TEST(DenseMatrix, clone_3_x_2_values_correct_values) {
+	int* values = new int[6] {1, 2, -3, 4, 5, 6};
+	DenseMatrix<int> matrix(MatrixSize(3, 2), values);
+	DenseMatrix<int>* clone = matrix.clone();
+	EXPECT_EQ((*clone)(0, 0), matrix(0, 0));
+	EXPECT_EQ((*clone)(0, 1), matrix(0, 1));
+	EXPECT_EQ((*clone)(1, 0), matrix(1, 0));
+	EXPECT_EQ((*clone)(1, 1), matrix(1, 1));
+	EXPECT_EQ((*clone)(2, 0), matrix(2, 0));
+	EXPECT_EQ((*clone)(2, 1), matrix(2, 1));
+}
+
+TEST(DenseMatrix, clone_3_x_2_values_really_copied) {
+	int* values = new int[6] {1, 2, -3, 4, 5, 6};
+	DenseMatrix<int> matrix(MatrixSize(3, 2), values);
+	DenseMatrix<int>* clone = matrix.clone();
+	matrix(0, 0) = 0;
+	EXPECT_EQ((*clone)(0, 0), 1);
 }

@@ -29,7 +29,7 @@ target_include_directories(test-consensusproblem-linearsystemsolver
 target_link_libraries(test-consensusproblem-linearsystemsolver PRIVATE gtest)
 target_link_libraries(test-consensusproblem-linearsystemsolver PRIVATE consensusproblem)
 
-add_test(
-	NAME test-consensusproblem-linearsystemsolver
-	COMMAND test-consensusproblem-linearsystemsolver
-)
+# add_test(
+# 	NAME test-consensusproblem-linearsystemsolver
+# 	COMMAND test-consensusproblem-linearsystemsolver
+# )

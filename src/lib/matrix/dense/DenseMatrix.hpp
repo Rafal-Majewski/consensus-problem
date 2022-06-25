@@ -1,5 +1,5 @@
-#ifndef DENSEMATRIX_HPP_INCLUDED
-#define DENSEMATRIX_HPP_INCLUDED
+#ifndef MATRIX_DENSE_HPP_INCLUDED
+#define MATRIX_DENSE_HPP_INCLUDED
 
 #include "../Matrix.hpp"
 #include "../size/MatrixSize.hpp"
@@ -12,13 +12,16 @@ class DenseMatrix : public Matrix<I> {
 	public:
 	DenseMatrix(MatrixSize size);
 	DenseMatrix(MatrixSize size, I* values);
+	DenseMatrix(const DenseMatrix<I>& other);
 	~DenseMatrix();
 	I operator()(int y, int x) const override;
 	I& operator()(int y, int x) override;
-	DenseMatrix<I> operator*(Matrix<I>& other) const;
+	DenseMatrix<I> operator*(DenseMatrix<I> other) const;
+	DenseMatrix<I>* clone() const override;
+	void swapRows(int rowIndex1, int rowIndex2) override;
 };
 
 
 #include "./DenseMatrix.tpp"
 
-#endif // DENSEMATRIX_HPP_INCLUDED
+#endif // MATRIX_DENSE_HPP_INCLUDED

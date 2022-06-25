@@ -9,9 +9,10 @@ class Matrix {
 	public:
 	const MatrixSize size;
 	Matrix(MatrixSize size);
-	Matrix(MatrixSize size, I* values);
 	virtual I operator()(int y, int x) const = 0;
 	virtual I& operator()(int y, int x) = 0;
+	virtual Matrix<I>* clone() const = 0;
+	virtual void swapRows(int rowIndex1, int rowIndex2) = 0;
 };
 
 

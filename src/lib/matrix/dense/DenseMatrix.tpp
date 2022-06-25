@@ -1,4 +1,5 @@
 #include "./DenseMatrix.hpp"
+#include <utility>
 
 
 template <typename I>
@@ -7,7 +8,7 @@ DenseMatrix<I>::DenseMatrix(MatrixSize size) : Matrix<I>(size) {
 };
 
 template <typename I>
-DenseMatrix<I>::DenseMatrix(MatrixSize size, I* values) : DenseMatrix(size) {
+DenseMatrix<I>::DenseMatrix(MatrixSize size, I* values) : DenseMatrix<I>(size) {
 	int totalCellsCount = this->size.rowsCount * this->size.columnsCount;
 	for (int i = 0; i < totalCellsCount; ++i) {
 		this->values[i] = values[i];
@@ -20,9 +21,11 @@ DenseMatrix<I>::~DenseMatrix() {
 };
 
 template <typename I>
-I& DenseMatrix<I>::operator()(int y, int x) {
-	return this->values[y * this->size.columnsCount + x];
-}
+DenseMatrix<I>::DenseMatrix(
+	const DenseMatrix<I>& matrix
+) :
+	DenseMatrix(matrix.size, matrix.values) {
+};
 
 template <typename I>
 I DenseMatrix<I>::operator()(int y, int x) const {
@@ -30,7 +33,12 @@ I DenseMatrix<I>::operator()(int y, int x) const {
 }
 
 template <typename I>
-DenseMatrix<I> DenseMatrix<I>::operator*(Matrix<I>& other) const {
+I& DenseMatrix<I>::operator()(int y, int x) {
+	return this->values[y * this->size.columnsCount + x];
+}
+
+template <typename I>
+DenseMatrix<I> DenseMatrix<I>::operator*(DenseMatrix<I> other) const {
 	DenseMatrix<I> result(MatrixSize(this->size.rowsCount, other.size.columnsCount));
 	for (int y = 0; y < this->size.rowsCount; ++y) {
 		for (int x = 0; x < other.size.columnsCount; ++x) {
@@ -43,3 +51,18 @@ DenseMatrix<I> DenseMatrix<I>::operator*(Matrix<I>& other) const {
 	}
 	return result;
 };
+
+template <typename I>
+DenseMatrix<I>* DenseMatrix<I>::clone() const {
+	return new DenseMatrix<I>(*this);
+}
+
+template <typename I>
+void DenseMatrix<I>::swapRows(int rowIndex1, int rowIndex2) {
+	for (int x = 0; x < this->size.columnsCount; ++x) {
+		std::swap(
+			this->values[rowIndex1 * this->size.columnsCount + x],
+			this->values[rowIndex2 * this->size.columnsCount + x]
+		);
+	}
+}

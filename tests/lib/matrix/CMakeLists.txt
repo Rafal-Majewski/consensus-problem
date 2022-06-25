@@ -1,2 +1,2 @@
-add_subdirectory(./densematrix)
-add_subdirectory(./sparsematrix)
+add_subdirectory(./dense)
+add_subdirectory(./sparse)
