@@ -11,6 +11,13 @@ namespace ConsensusProblem {
 	class LinearSystemSolver : public Solver<DT> {
 		private:
 
+		void buildRec(
+			const std::vector<short> states,
+			const short rulesCount,
+			Rule* const* rules,
+			std::map<std::vector<short>, std::vector<Rule*>>* rulesByStates
+		) const;
+
 		std::vector<Rule*> findApplicableRules(
 			const std::vector<short> states,
 			const short rulesCount,
@@ -29,5 +36,7 @@ namespace ConsensusProblem {
 	};
 }
 
+
+#include "./LinearSystemSolver.tpp"
 
 #endif // CONSENSUSPROBLEM_LINEARSYSTEMSOLVER_HPP_INCLUDED

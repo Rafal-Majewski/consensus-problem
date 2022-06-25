@@ -8,8 +8,8 @@ template <typename I>
 class Matrix {
 	public:
 	const MatrixSize size;
-	Matrix<I>(MatrixSize size);
-	Matrix<I>(MatrixSize size, I* values);
+	Matrix(MatrixSize size);
+	Matrix(MatrixSize size, I* values);
 	virtual I operator()(int y, int x) const = 0;
 	virtual I& operator()(int y, int x) = 0;
 };
