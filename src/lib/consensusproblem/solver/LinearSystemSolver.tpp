@@ -1,5 +1,4 @@
 #include "./LinearSystemSolver.hpp"
-#include <iostream>
 
 
 namespace ConsensusProblem {
