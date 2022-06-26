@@ -4,12 +4,15 @@
 #include "./Solver.hpp"
 #include <vector>
 #include <map>
+#include <numalg/linearsystemsolver/LinearSystemSolver.hpp>
 
 
 namespace ConsensusProblem {
-	template <typename DT>
+	template <typename DT, typename MTRX>
 	class LinearSystemSolver : public Solver<DT> {
 		private:
+
+		const Numalg::LinearSystemSolver<DT>* solver;
 
 		void buildRec(
 			const std::vector<short> states,
@@ -25,6 +28,10 @@ namespace ConsensusProblem {
 		) const;
 
 		public:
+
+		LinearSystemSolver(
+			const Numalg::LinearSystemSolver<DT>* solver
+		);
 
 		DT solve(
 			const short statesCount,

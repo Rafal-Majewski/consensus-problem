@@ -1,26 +1,26 @@
 #include <gtest/gtest.h>
 #include <linearsystem/LinearSystem.hpp>
 #include <linearsystem/size/LinearSystemSize.hpp>
-#include <linearsystemsolver/gauss/partial/PartialGauss.hpp>
+#include <numalg/linearsystemsolver/gauss/partial/PartialGauss.hpp>
 #include <matrix/dense/DenseMatrix.hpp>
 #include <matrix/size/MatrixSize.hpp>
 
 #define MAX_ERROR 0.0000001
 
 
-TEST(PartialGauss, 1_equation_and_1_variable) {
+TEST(Numalg_PartialGauss, 1_equation_and_1_variable) {
 	LinearSystem<double> system(
 		LinearSystemSize(1, 1),
 		DenseMatrix<double>(MatrixSize(1, 1), new double[1]{2.5}),
 		new double[1]{5.0}
 	);
 	double* solution = new double[1];
-	const PartialGauss<double> solver;
+	const Numalg::PartialGauss<double> solver;
 	solver.solve(system, solution);
 	EXPECT_NEAR(solution[0], 2.0, MAX_ERROR);
 }
 
-TEST(partialGauss, 2_equations_and_2_variables) {
+TEST(Numalg_PartialGauss, 2_equations_and_2_variables) {
 	LinearSystem<double> system(
 		LinearSystemSize(2, 2),
 		// new double[4]{
@@ -36,13 +36,13 @@ TEST(partialGauss, 2_equations_and_2_variables) {
 		}
 	);
 	double* solution = new double[2];
-	const PartialGauss<double> solver;
+	const Numalg::PartialGauss<double> solver;
 	solver.solve(system, solution);
 	EXPECT_NEAR(solution[0], 3.0, MAX_ERROR);
 	EXPECT_NEAR(solution[1], -4.0, MAX_ERROR);
 }
 
-TEST(partialGauss, 3_equations_and_3_variables) {
+TEST(Numalg_PartialGauss, 3_equations_and_3_variables) {
 	LinearSystem<double> system(
 		LinearSystemSize(3, 3),
 		// new double[9]{
@@ -61,14 +61,14 @@ TEST(partialGauss, 3_equations_and_3_variables) {
 	);
 	double* solution = new double[3];
 	// partialGauss(system, solution);
-	const PartialGauss<double> solver;
+	const Numalg::PartialGauss<double> solver;
 	solver.solve(system, solution);
 	EXPECT_NEAR(solution[0], 3.0, MAX_ERROR);
 	EXPECT_NEAR(solution[1], -4.0, MAX_ERROR);
 	EXPECT_NEAR(solution[2], 8.5, MAX_ERROR);
 }
 
-TEST(partialGauss, 4_equations_and_4_variables) {
+TEST(Numalg_PartialGauss, 4_equations_and_4_variables) {
 	LinearSystem<double> system(
 		LinearSystemSize(4, 4),
 		DenseMatrix<double>(MatrixSize(4, 4), new double[16]{
@@ -80,7 +80,7 @@ TEST(partialGauss, 4_equations_and_4_variables) {
 		new double[4]{2.0, 0.0, 1.0, 12.0}
 	);
 	double* solution = new double[4];
-	const PartialGauss<double> solver;
+	const Numalg::PartialGauss<double> solver;
 	solver.solve(system, solution);
 	EXPECT_NEAR(solution[0], 26.0/7.0, MAX_ERROR);
 	EXPECT_NEAR(solution[1], 29.0/7.0, MAX_ERROR);

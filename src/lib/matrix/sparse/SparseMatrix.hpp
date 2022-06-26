@@ -21,6 +21,7 @@ class SparseMatrix : public Matrix<I> {
 	SparseMatrix<I> operator*(SparseMatrix<I> other) const;
 	SparseMatrix<I>* clone() const override;
 	void swapRows(int rowIndex1, int rowIndex2) override;
+	static SparseMatrix<I> zero(MatrixSize size);
 };
 
 

@@ -87,3 +87,8 @@ SparseMatrix<I>::SparseMatrix(
 	const SparseMatrix<I>& other
 ) : SparseMatrix<I>(other.size, other.values) {
 }
+
+template <typename I>
+SparseMatrix<I> SparseMatrix<I>::zero(MatrixSize size) {
+	return SparseMatrix<I>(size);
+}

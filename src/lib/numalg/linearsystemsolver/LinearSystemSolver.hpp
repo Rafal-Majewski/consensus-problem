@@ -4,10 +4,14 @@
 #include <linearsystem/LinearSystem.hpp>
 
 
-template <typename DT>
-class LinearSystemSolver {
-	virtual void solve(LinearSystem<DT>& system, DT* solution) const = 0;
-};
+namespace Numalg {
+	template <typename DT>
+	class LinearSystemSolver {
+		public:
+
+		virtual void solve(LinearSystem<DT>& system, DT* solution) const = 0;
+	};
+}
 
 
 #include "./LinearSystemSolver.tpp"

@@ -4,18 +4,20 @@
 #include "../Gauss.hpp"
 
 
-template <typename DT>
-class PartialGauss : public Gauss<DT> {
-	private:
+namespace Numalg {
+	template <typename DT>
+	class PartialGauss : public Gauss<DT> {
+		private:
 
-	void choose(
-		LinearSystem<DT>& system,
-		int equationIndex,
-		int variableIndex
-	) const override;
+		void choose(
+			LinearSystem<DT>& system,
+			int equationIndex,
+			int variableIndex
+		) const override;
 
-	public:
-};
+		public:
+	};
+}
 
 
 #include "./PartialGauss.tpp"

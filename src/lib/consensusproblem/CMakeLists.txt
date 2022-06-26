@@ -9,3 +9,16 @@ add_library(consensusproblem
 	./rule/Rule21.cpp
 	./rule/Rule22.cpp
 )
+
+target_link_libraries(consensusproblem
+	PRIVATE linearsystem
+)
+
+target_link_libraries(consensusproblem
+	PRIVATE linearsystemsolver
+)
+
+target_include_directories(consensusproblem
+	PRIVATE ${PROJECT_LIB_DIR}
+)
+

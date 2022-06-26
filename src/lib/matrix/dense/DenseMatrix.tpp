@@ -66,3 +66,12 @@ void DenseMatrix<I>::swapRows(int rowIndex1, int rowIndex2) {
 		);
 	}
 }
+
+template <typename I>
+DenseMatrix<I> DenseMatrix<I>::zero(MatrixSize size) {
+	DenseMatrix<I> result(size);
+	for (int i = 0; i < size.rowsCount * size.columnsCount; ++i) {
+		result.values[i] = 0;
+	}
+	return result;
+}

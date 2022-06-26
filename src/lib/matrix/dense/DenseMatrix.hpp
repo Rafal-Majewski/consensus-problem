@@ -19,6 +19,7 @@ class DenseMatrix : public Matrix<I> {
 	DenseMatrix<I> operator*(DenseMatrix<I> other) const;
 	DenseMatrix<I>* clone() const override;
 	void swapRows(int rowIndex1, int rowIndex2) override;
+	static DenseMatrix<I> zero(MatrixSize size);
 };
 
 
