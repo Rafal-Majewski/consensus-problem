@@ -30,7 +30,20 @@ void LinearSystem<DT>::addRows(int targetRowIndex, int sourceRowIndex, DT factor
 }
 
 template <typename DT>
+void LinearSystem<DT>::addRows(int targetRowIndex, int sourceRowIndex) {
+	this->addRows(targetRowIndex, sourceRowIndex, 1);
+}
+
+template <typename DT>
 void LinearSystem<DT>::swapRows(int rowIndex1, int rowIndex2) {
 	(*this->coefficients).swapRows(rowIndex1, rowIndex2);
 	std::swap(this->constants[rowIndex1], this->constants[rowIndex2]);
+}
+
+template <typename DT>
+void LinearSystem<DT>::divideRow(int rowIndex, DT factor) {
+	for (int x = 0; x < this->size.variablesCount; ++x) {
+		(*this->coefficients)(rowIndex, x) /= factor;
+	}
+	this->constants[rowIndex] /= factor;
 }

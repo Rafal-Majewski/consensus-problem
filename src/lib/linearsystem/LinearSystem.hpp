@@ -22,6 +22,8 @@ struct LinearSystem {
 	LinearSystem(const LinearSystem<DT>& other);
 	~LinearSystem();
 	void addRows(int targetRowIndex, int sourceRowIndex, DT factor);
+	void addRows(int targetRowIndex, int sourceRowIndex);
+	void divideRow(int rowIndex, DT factor);
 	void swapRows(int rowIndex1, int rowIndex2);
 };
 
