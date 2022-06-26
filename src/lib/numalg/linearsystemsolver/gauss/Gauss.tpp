@@ -20,9 +20,12 @@ namespace Numalg {
 		LinearSystem<DT>& system
 	) const {
 		for (int x = 0; x < system.size.variablesCount; ++x) {
+			// poszukaj lepszego współczynnika na miejsce x, x
+			// i zamień wiersze jeśli uda się znaleźć
 			this->choose(system, x, x);
 			for (int y = x + 1; y < system.size.equationsCount; ++y) {
 				DT factor = -(*system.coefficients)(y, x) / (*system.coefficients)(x, x);
+				// do wiersza y dodaj wiersz x wymnożony razy factor
 				system.addRows(y, x, factor);
 			}
 		}

@@ -3,6 +3,7 @@ add_library(linearsystemsolver
 	./gauss/Gauss.cpp
 	./gauss/partial/PartialGauss.cpp
 	./jacobi/Jacobi.cpp
+	./gaussseidel/GaussSeidel.cpp
 )
 
 target_link_libraries(linearsystemsolver
